@@ -14,8 +14,9 @@
 
   <!-- CSS -->
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
-
-  <script src='//unpkg.com/valine/dist/Valine.min.js'></script>
+  
+  <!-- jQuery -->
+  <script src="{{ "/assets/js/jquery.min.js " | prepend: site.baseurl }}"></script>
 
   <!-- OG Tag -->
   {% if page.title %}
