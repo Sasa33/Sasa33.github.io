@@ -20,6 +20,23 @@ layout: page
   <i class="fas fa-chevron-up"></i>
 </div>
 
+<!-- Side Catalog Container -->
+{% if page.catalog %}
+<div class="
+    col-lg-2 col-lg-offset-0
+    visible-lg-block
+    sidebar-container
+    catalog-container">
+    <div class="side-catalog">
+        <hr class="hidden-sm hidden-xs">
+        <h5>
+            <a class="catalog-toggle" href="#">CATALOG</a>
+        </h5>
+        <ul class="catalog-body"></ul>
+    </div>
+</div>
+{% endif %}
+
 <!-- Disqus -->
 {% if site.disqus_shortname %}
 <div id="comments">
@@ -68,3 +85,34 @@ layout: page
     document.documentElement.scrollTop = 0
   }
 </script>
+
+<!-- Side Catalog -->
+{% if page.catalog %}
+<script type="text/javascript">
+    function generateCatalog (selector) {
+      const postContent = document.getElementsByClassName('post-content');
+      const catalogBody = document.getElementsByClassName(selector);
+      headings = postContent[0].querySelectorAll("h1, h2, h3, h4, h5, h6");
+      headings.forEach(element => {
+        let tagName = element.tagName;
+        let id = element.getAttribute('id');
+        let text = element.textContent;
+        let nav = document.createElement('li');
+        nav.className = `${tagName}-nav`;
+        nav.innerHTML = `<a href='#${id}'>${text}</a>`
+        catalogBody[0].appendChild(nav);
+      });
+      return true;
+    }
+
+    generateCatalog("catalog-body");
+
+    // toggle side catalog
+    const sideCatalog = document.getElementsByClassName('side-catalogside-catalog');
+    const catalogToggle = document.getElementsByClassName('catalog-toggle');
+    catalogToggle[0].addEventListener('click', () => {
+      e.preventDefault();
+      sideCatalog[0].classList.toggle('fold');
+    })
+</script>
+{% endif %}
