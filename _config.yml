@@ -30,7 +30,7 @@ icons :
   instagram:
 
 # Disqus
-#disqus_shortname: Sasa33
+disqus_shortname: Sasa33
 
 # Post
 excerpt_separator: <!--more-->
